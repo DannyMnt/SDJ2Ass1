@@ -11,7 +11,9 @@ public class ViewHandler
     private Scene currentScene;
     private Stage primaryStage;
     private ViewModelFactory viewModelFactory;
-    private AuctionItemViewController auctionItemViewController;
+    private LibraryViewController libraryViewController;
+    private BorrowViewController borrowViewController;
+    private ReturnViewController returnViewController;
 
     public ViewHandler(ViewModelFactory viewModelFactory)
     {
@@ -30,8 +32,14 @@ public class ViewHandler
         Region root = null;
         switch (id)
         {
-            case "item":
-                root = loadAuctionItemView("AuctionItemView.fxml");
+            case "library":
+                root = loadLibraryView("libraryFXML.fxml");
+                break;
+            case "borrow":
+                root = loadBorrowView("borrowFXML");
+                break;
+            case "return":
+                root = loadReturnView("returnFXML");
                 break;
         }
         currentScene.setRoot(root);
@@ -52,17 +60,17 @@ public class ViewHandler
         primaryStage.close();
     }
 
-    private Region loadAuctionItemView(String fxmlFile)
+    private Region loadLibraryView(String fxmlFile)
     {
-        if (auctionItemViewController == null)
+        if (libraryViewController == null)
         {
             try
             {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource(fxmlFile));
                 Region root = loader.load();
-                auctionItemViewController = loader.getController();
-                auctionItemViewController.init(this, viewModelFactory.getAuctionItemViewModel(), root);
+                libraryViewController = loader.getController();
+                libraryViewController.init(this, viewModelFactory.getLibraryViewModel(), root);
             }
             catch (Exception e)
             {
@@ -71,8 +79,53 @@ public class ViewHandler
         }
         else
         {
-            auctionItemViewController.reset();
+            libraryViewController.reset();
         }
-        return auctionItemViewController.getRoot();
+        return libraryViewController.getRoot();
+    }
+    private Region loadBorrowView(String fxmlFile) {
+        if (borrowViewController == null)
+        {
+            try
+            {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlFile));
+                Region root = loader.load();
+                borrowViewController = loader.getController();
+                borrowViewController.init(this, viewModelFactory.getBorrowViewModel(), root);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            borrowViewController.reset();
+        }
+        return borrowViewController.getRoot();
+    }
+
+    private Region loadReturnView(String fxmlFile) {
+        if (returnViewController == null)
+        {
+            try
+            {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlFile));
+                Region root = loader.load();
+                returnViewController = loader.getController();
+                returnViewController.init(this, viewModelFactory.getReturnViewModel(), root);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            returnViewController.reset();
+        }
+        return returnViewController.getRoot();
     }
 }
