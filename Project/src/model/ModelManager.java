@@ -1,7 +1,6 @@
 package model;
 
-import utility.observer.subject.NamedPropertyChangeSubject;
-
+import utility.observer.javaobserver.NamedPropertyChangeSubject;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
