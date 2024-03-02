@@ -43,6 +43,6 @@ public class BorrowViewModel {
     }
 
     public void removeVinyl(){
-        model.
+        
     }
 }
