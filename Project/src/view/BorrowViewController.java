@@ -20,6 +20,9 @@ public class BorrowViewController {
     @FXML private Label reserveName;
     @FXML private Label borrowName;
     @FXML private Button reserveBtn;
+    @FXML private Button borrowBtn;
+    @FXML private Button returnBtn;
+    @FXML private Button removeBtn;
 
     public BorrowViewController() {
     }
@@ -31,11 +34,11 @@ public class BorrowViewController {
 
         nameLabel.textProperty().bindBidirectional(model.getNameLabel());
         reserveName.textProperty().bindBidirectional(model.getReserveLabel());
-        borrowName.textProperty().bindBidirectional(model.getReserveLabel());
+        borrowName.textProperty().bindBidirectional(model.getBorrowLabel());
     }
 
     public void reset() {
-        nameLabel.setText("");
+        nameLabel.setText(null);
     }
 
     public Region getRoot() {
@@ -48,19 +51,36 @@ public class BorrowViewController {
     }
 
     public void reserveBtn() {
-        if(reserveName.getText().equals("")) {
-            reserveName.setText(nameLabel.getText());
-            model.reserve();
-            reserveBtn.setDisable(true);
+        reserveName.setText(nameLabel.getText());
+        reserveBtn.setDisable(true);
+        model.reserveVinyl();
+        reset();
+    }
+
+    public void borrowBtn() {
+        if(nameLabel.getText().equals(reserveName.getText())) {
+            borrowBtn.setDisable(true);
+            reserveBtn.setDisable(false);
+            returnBtn.setDisable(false);
+            borrowName.setText(reserveName.getText());
+            reserveName.setText(null);
             reset();
         }
     }
 
-    public void borrowBtn() {
-
+    public void returnBtn() {
+        if(nameLabel.getText().equals(borrowName.getText())) {
+            returnBtn.setDisable(true);
+            borrowName.setText(null);
+            borrowBtn.setDisable(false);
+            reset();
+        }
     }
 
-    public void returnBtn() {
-
+    public void removeBtn() {
+        removeBtn.setDisable(true);
+        reserveBtn.setDisable(true);
+        if(reserveName.getText() == null)
+            borrowBtn.setDisable(true);
     }
 }

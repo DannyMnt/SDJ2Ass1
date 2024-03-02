@@ -3,6 +3,7 @@ package viewmodel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import model.Model;
+import model.Vinyl;
 
 public class BorrowViewModel {
     private Model model;
@@ -28,8 +29,20 @@ public class BorrowViewModel {
         return borrowLabel;
     }
 
-    public void reserve(){
+    public void reserveVinyl(){
         System.out.println("test");
-        model.reserveVinyl(nameLabel, id);
+//        model.reserveVinyl(nameLabel, id);
+    }
+
+    public void borrowVinyl(){
+
+    }
+
+    public void returnVinyl(){
+
+    }
+
+    public void removeVinyl(){
+        model.
     }
 }

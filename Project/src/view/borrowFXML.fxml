@@ -13,7 +13,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="61.0" prefWidth="500.0">
          <children>
-            <Label alignment="CENTER" prefHeight="53.0" prefWidth="499.0" text="Reserve" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="53.0" prefWidth="499.0" text="Edit" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font>
@@ -68,23 +68,23 @@
             </HBox>
             <TextField fx:id="nameLabel" promptText="Your name">
                <VBox.margin>
-                  <Insets bottom="50.0" left="150.0" right="150.0" />
+                  <Insets bottom="20.0" left="150.0" right="150.0" />
                </VBox.margin>
             </TextField>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" text="Reserve">
+                  <Button fx:id="reserveBtn" mnemonicParsing="false" onAction="#reserveBtn" prefHeight="37.0" prefWidth="83.0" text="Reserve">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" text="Borrow">
+                  <Button fx:id="borrowBtn" mnemonicParsing="false" onAction="#borrowBtn" prefHeight="37.0" prefWidth="83.0" text="Borrow">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="83.0" text="Return" />
-                  <Button mnemonicParsing="false" prefWidth="83.0" text="Remove">
+                  <Button fx:id="returnBtn" mnemonicParsing="false" onAction="#returnBtn" prefWidth="83.0" text="Return" />
+                  <Button fx:id="removeBtn" mnemonicParsing="false" onAction="#removeBtn" prefWidth="83.0" text="Remove">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -97,16 +97,16 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Reserved by: " textFill="WHITE" />
-                  <Label fx:id="reserveName" text="Label" textFill="WHITE" />
+                  <Label fx:id="reserveName" textFill="WHITE" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Borrowed by: " textFill="WHITE" />
-                  <Label fx:id="borrowName" text="Label" textFill="WHITE" />
+                  <Label fx:id="borrowName" textFill="WHITE" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#closeBtn" text="Cancel">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
