@@ -3,25 +3,43 @@ package model;
 public class Vinyl {
     private String title;
     private String artist;
+<<<<<<< Updated upstream
     private int year;
 
     private State state;
 
     private boolean isRemoved;
+=======
+    private String year;
+    private StateContext context;
+>>>>>>> Stashed changes
+
+    private String number;
+    private String state;
 
 
-    public Vinyl(String title, String artist, int year){
+    public Vinyl(String title, String artist, String year, String number){
+        this.number = number;
         this.title = title;
         this.artist = artist;
         this.year = year;
+<<<<<<< Updated upstream
         this.state = new VinylAvailable();
         this.isRemoved = false;
     }
 
+=======
+        this.context = new StateContext();
+        this.state = "Available";
+    }
+
+
+>>>>>>> Stashed changes
     public String getTitle() {
         return title;
     }
 
+<<<<<<< Updated upstream
 
     public void setTitle(String title) {
         this.title = title;
@@ -80,5 +98,20 @@ public class Vinyl {
         return "Vinyl{" + "title='" + title + '\'' + ", artist='" + artist
             + '\'' + ", year=" + year + ", state=" + state.status() + ", isRemoved="
             + isRemoved + '}';
+=======
+    public String getArtist() {
+        return artist;
+    }
+    public String getState() {
+        return state;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String getNumber() {
+        return number;
+>>>>>>> Stashed changes
     }
 }

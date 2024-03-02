@@ -3,21 +3,26 @@ package viewmodel;
 import model.Model;
 
 public class ViewModelFactory {
-    private Model model;
-    private LibraryViewModel libraryViewModel;
-    private BorrowViewModel borrowViewModel;
+
+//    private LibraryViewModel libraryViewModel;
+//    private BorrowViewModel borrowViewModel;
+
+    private ListVinylViewModel listVinylViewModel;
+
+    private ManageVinylViewModel manageVinylViewModel;
+
 
     public ViewModelFactory(Model model){
-        this.model = model;
-        libraryViewModel = new LibraryViewModel(model);
-        borrowViewModel = new BorrowViewModel(model);
+        ViewModelState viewModelState = new ViewModelState();
+        listVinylViewModel = new ListVinylViewModel(model, viewModelState);
+        manageVinylViewModel = new ManageVinylViewModel(model, viewModelState);
     }
 
-    public LibraryViewModel getLibraryViewModel() {
-        return libraryViewModel;
+    public ListVinylViewModel getListVinylViewModel() {
+        return listVinylViewModel;
     }
 
-    public BorrowViewModel getBorrowViewModel() {
-        return borrowViewModel;
+    public ManageVinylViewModel getManageVinylViewModel() {
+        return manageVinylViewModel;
     }
 }

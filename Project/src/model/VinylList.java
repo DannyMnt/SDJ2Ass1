@@ -7,7 +7,7 @@ public class VinylList {
 
 
     public VinylList(){
-        this.vinyls = new ArrayList<Vinyl>();
+        this.vinyls = new ArrayList<>();
     }
 
 

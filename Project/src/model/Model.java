@@ -2,10 +2,11 @@ package model;
 
 
 import utility.observer.javaobserver.NamedPropertyChangeSubject;
+import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.util.ArrayList;
 
-public interface Model extends NamedPropertyChangeSubject
+public interface Model extends UnnamedPropertyChangeSubject
 {
 
 //    void reserveVinyl(String name, int id);

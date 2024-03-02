@@ -8,22 +8,22 @@ import viewmodel.ViewModelFactory;
 
 public class ViewHandler
 {
-    private Scene currentScene;
-    private Stage primaryStage;
     private ViewModelFactory viewModelFactory;
-    private LibraryViewController libraryViewController;
-    private BorrowViewController borrowViewController;
+    private Stage primaryStage;
+    private Scene currentScene;
+    private ManageVinylViewController manageExerciseViewController;
+    private ListVinylViewController listExercisesViewController;
 
     public ViewHandler(ViewModelFactory viewModelFactory)
     {
         this.viewModelFactory = viewModelFactory;
-        currentScene = new Scene(new Region());
     }
 
     public void start(Stage primaryStage)
     {
         this.primaryStage = primaryStage;
-        openView("borrow");
+        this.currentScene = new Scene(new Region());
+        openView("list");
     }
 
     public void openView(String id)
@@ -31,14 +31,15 @@ public class ViewHandler
         Region root = null;
         switch (id)
         {
-            case "library":
-                root = loadLibraryView("libraryFXML.fxml");
+            case "list":
+                root = loadListView("ListVinylView.fxml");
                 break;
-            case "borrow":
-                root = loadBorrowView("borrowFXML.fxml");
+            case "manage":
+                root = loadManageView("ManageVinylView.fxml");
                 break;
         }
         currentScene.setRoot(root);
+
         String title = "";
         if (root.getUserData() != null)
         {
@@ -51,22 +52,43 @@ public class ViewHandler
         primaryStage.show();
     }
 
-    public void closeView()
+    private Region loadListView(String fxmlFile)
     {
-        primaryStage.close();
+        if (listExercisesViewController == null)
+        {
+            try
+            {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlFile));
+                Region root = loader.load();
+                listExercisesViewController = loader.getController();
+                listExercisesViewController
+                        .init(this, viewModelFactory.getListVinylViewModel(), root);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            listExercisesViewController.reset();
+        }
+        return listExercisesViewController.getRoot();
     }
 
-    private Region loadLibraryView(String fxmlFile)
+    private Region loadManageView(String fxmlFile)
     {
-        if (libraryViewController == null)
+        if (manageExerciseViewController == null)
         {
             try
             {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource(fxmlFile));
                 Region root = loader.load();
-                libraryViewController = loader.getController();
-                libraryViewController.init(this, viewModelFactory.getLibraryViewModel(), root);
+                manageExerciseViewController = loader.getController();
+                manageExerciseViewController
+                        .init(this, viewModelFactory.getManageVinylViewModel(), root);
             }
             catch (Exception e)
             {
@@ -75,30 +97,8 @@ public class ViewHandler
         }
         else
         {
-            libraryViewController.reset();
+            manageExerciseViewController.reset();
         }
-        return libraryViewController.getRoot();
-    }
-    private Region loadBorrowView(String fxmlFile) {
-        if (borrowViewController == null)
-        {
-            try
-            {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmlFile));
-                Region root = loader.load();
-                borrowViewController = loader.getController();
-                borrowViewController.init(this, viewModelFactory.getBorrowViewModel(), root);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-        else
-        {
-            borrowViewController.reset();
-        }
-        return borrowViewController.getRoot();
+        return manageExerciseViewController.getRoot();
     }
 }

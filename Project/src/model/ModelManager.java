@@ -1,38 +1,52 @@
 package model;
 
-import utility.observer.javaobserver.NamedPropertyChangeSubject;
+
+import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class ModelManager implements Model, NamedPropertyChangeSubject {
+public class ModelManager implements Model, UnnamedPropertyChangeSubject {
     private PropertyChangeSupport propertyChangeSupport;
     private VinylList vinylList;
 
     public ModelManager(){
         this.propertyChangeSupport = new PropertyChangeSupport(this);
+        vinylList = new VinylList();
+        createDummyData();
     }
     @Override
-    public void addListener(String propertyName, PropertyChangeListener listener) {
-        propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
+    public void addListener(PropertyChangeListener listener) {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    private void createDummyData(){
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
     }
 
     @Override
-    public void removeListener(String propertyName, PropertyChangeListener listener) {
-        propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+    public void removeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.removePropertyChangeListener( listener);
     }
 
     @Override
     public ArrayList<Vinyl> getAllVinyls() {
-        return null;
+        return vinylList.getVinyls();
     }
 
     @Override
     public Vinyl getVinyl(int number) {
-        return null;
+        return vinylList.getVinyl(number);
     }
+
+
 
     @Override
     public void addVinyl(Vinyl vinyl) {
@@ -43,6 +57,8 @@ public class ModelManager implements Model, NamedPropertyChangeSubject {
     public Vinyl removeVinyl(int number) {
         return null;
     }
+
+
 
 
 //    @Override
