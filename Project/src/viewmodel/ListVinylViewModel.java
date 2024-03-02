@@ -20,7 +20,7 @@ public class ListVinylViewModel implements PropertyChangeListener {
     private ViewModelState viewModelState;
 
     private ObservableList<SimpleVinylViewModel> list;
-    private ObjectProperty<SimpleVinylViewModel> selectedExerciseProperty;
+    private ObjectProperty<SimpleVinylViewModel> selectedVinylProperty;
     private StringProperty errorProperty;
 
     public ListVinylViewModel(Model model, ViewModelState viewModelState)
@@ -28,7 +28,7 @@ public class ListVinylViewModel implements PropertyChangeListener {
         this.model = model;
         this.model.addListener(this);
         this.viewModelState = viewModelState;
-        selectedExerciseProperty = new SimpleObjectProperty<>();
+        selectedVinylProperty = new SimpleObjectProperty<>();
         errorProperty = new SimpleStringProperty();
 
         list = FXCollections.observableArrayList();
@@ -52,9 +52,13 @@ public class ListVinylViewModel implements PropertyChangeListener {
         }
     }
 
-    public void open()
+    public boolean open()
     {
-
+        if(selectedVinylProperty.get() == null){
+            errorProperty.set("Not selected vinyl!");
+            return false;
+        }
+        return true;
     }
 
     public ObservableList<SimpleVinylViewModel> getAll()
@@ -65,7 +69,7 @@ public class ListVinylViewModel implements PropertyChangeListener {
     public void setSelected(SimpleVinylViewModel vinylVm)
     {
         if(vinylVm == null) return;
-        selectedExerciseProperty.set(vinylVm);
+        selectedVinylProperty.set(vinylVm);
         viewModelState.setId(UUID.fromString(vinylVm.getNumberPropertyProperty().getValue()));
         viewModelState.setState(vinylVm.getStatePropertyProperty().getValue());
     }

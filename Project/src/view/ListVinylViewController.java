@@ -73,8 +73,10 @@ public class ListVinylViewController {
 
     @FXML private void open()
     {
-        viewModel.open();
+        if(viewModel.open()){
         viewHandler.openView("manage");
+        }
+
     }
 
 
