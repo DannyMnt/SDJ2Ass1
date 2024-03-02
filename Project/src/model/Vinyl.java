@@ -4,6 +4,7 @@ public class Vinyl {
     private String title;
     private String artist;
     private int year;
+    private State state;
 
 
     public Vinyl(String title, String artist, int year) {
@@ -11,6 +12,4 @@ public class Vinyl {
         this.artist = artist;
         this.year = year;
     }
-
-
 }
