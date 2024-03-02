@@ -55,23 +55,23 @@ public class Vinyl {
         this.state = state;
     }
 
-    public void borrowVinyl(){
+    public synchronized void borrowVinyl(){
         state.toBorrowed(this);
     }
 
-    public void reserveVinyl(){
+    public synchronized void reserveVinyl(){
         state.toReserved(this);
     }
 
-    public void returnVinyl(){
+    public synchronized void returnVinyl(){
         state.toAvailable(this);
     }
 
-    public void removeVinyl(){
+    public synchronized void removeVinyl(){
         state.toRemoved(this);
     }
 
-    public void toBorrowedAndReserved(){
+    public synchronized void borrowAndReserveVinyl(){
         state.toBorrowedAndReserved(this);
     }
 

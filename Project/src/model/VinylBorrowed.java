@@ -1,9 +1,6 @@
 package model;
 
 public class VinylBorrowed extends State{
-    public VinylBorrowed(){
-
-    }
 
     @Override
     public void toAvailable(Vinyl vinyl) {
