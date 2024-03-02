@@ -7,6 +7,7 @@ import java.beans.PropertyChangeSupport;
 
 public class ModelManager implements Model, NamedPropertyChangeSubject {
     private PropertyChangeSupport propertyChangeSupport;
+    private VinylList vinylList;
 
     public ModelManager(){
         this.propertyChangeSupport = new PropertyChangeSupport(this);
@@ -19,5 +20,15 @@ public class ModelManager implements Model, NamedPropertyChangeSubject {
     @Override
     public void removeListener(String propertyName, PropertyChangeListener listener) {
         propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+    }
+
+    @Override
+    public void reserveVinyl(String name, int id) {
+        vinylList.getVinyl(id).setReserveName(name);
+    }
+
+    @Override
+    public void borrowVinyl(String name, int id) {
+        vinylList.getVinyl(id).setBorrowName(name);
     }
 }

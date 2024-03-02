@@ -13,7 +13,6 @@ public class ViewHandler
     private ViewModelFactory viewModelFactory;
     private LibraryViewController libraryViewController;
     private BorrowViewController borrowViewController;
-    private ReturnViewController returnViewController;
 
     public ViewHandler(ViewModelFactory viewModelFactory)
     {
@@ -24,7 +23,7 @@ public class ViewHandler
     public void start(Stage primaryStage)
     {
         this.primaryStage = primaryStage;
-        openView("library");
+        openView("borrow");
     }
 
     public void openView(String id)
@@ -36,10 +35,7 @@ public class ViewHandler
                 root = loadLibraryView("libraryFXML.fxml");
                 break;
             case "borrow":
-                root = loadBorrowView("borrowFXML");
-                break;
-            case "return":
-                root = loadReturnView("returnFXML");
+                root = loadBorrowView("borrowFXML.fxml");
                 break;
         }
         currentScene.setRoot(root);
@@ -104,28 +100,5 @@ public class ViewHandler
             borrowViewController.reset();
         }
         return borrowViewController.getRoot();
-    }
-
-    private Region loadReturnView(String fxmlFile) {
-        if (returnViewController == null)
-        {
-            try
-            {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmlFile));
-                Region root = loader.load();
-                returnViewController = loader.getController();
-                returnViewController.init(this, viewModelFactory.getReturnViewModel(), root);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-        else
-        {
-            returnViewController.reset();
-        }
-        return returnViewController.getRoot();
     }
 }

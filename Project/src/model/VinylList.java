@@ -11,8 +11,7 @@ public class VinylList
     this.vinyls = vinyls;
   }
 
-  public ArrayList<Vinyl> getVinyls()
-  {
+  public ArrayList<Vinyl> getVinyls() {
     return vinyls;
   }
 
