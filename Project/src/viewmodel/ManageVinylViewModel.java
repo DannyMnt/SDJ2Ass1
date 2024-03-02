@@ -37,8 +37,7 @@ public class ManageVinylViewModel
     public void reset()
     {
         errorProperty.set(null);
-        System.out.println(viewModelState.getNumber());
-        Vinyl vinyl = model.getVinyl(viewModelState.getNumber());
+        Vinyl vinyl = model.getVinyl(viewModelState.getId());
         titleProperty.set(vinyl.getTitle());
         artistProperty.set(vinyl.getArtist());
         yearProperty.set(vinyl.getYear());

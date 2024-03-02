@@ -5,6 +5,7 @@ import utility.observer.javaobserver.NamedPropertyChangeSubject;
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public interface Model extends UnnamedPropertyChangeSubject
 {
@@ -15,7 +16,7 @@ public interface Model extends UnnamedPropertyChangeSubject
 
 
     ArrayList<Vinyl> getAllVinyls();
-    Vinyl getVinyl(int number);
+    Vinyl getVinyl(UUID id);
     void addVinyl(Vinyl vinyl);
     Vinyl removeVinyl(int number);
 

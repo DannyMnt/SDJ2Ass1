@@ -43,9 +43,11 @@ public class ModelManager implements Model, UnnamedPropertyChangeSubject {
     }
 
     @Override
-    public Vinyl getVinyl(int number) {
-        return vinylList.getVinyl(number);
+    public Vinyl getVinyl(UUID id) {
+        return vinylList.getVinyl(id);
     }
+
+
 
 
 

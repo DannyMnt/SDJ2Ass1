@@ -1,12 +1,14 @@
 package viewmodel;
 
+import java.util.UUID;
+
 public class ViewModelState {
-    private int number;
+    private UUID id;
     private boolean remove;
 
     private String state;
     public ViewModelState(){
-        this.number = -1;
+        this.id = null;
         this.remove = false;
         this.state = null;
     }
@@ -21,20 +23,20 @@ public class ViewModelState {
         this.state = state;
     }
 
-    public int getNumber()
+    public UUID getId()
     {
-        return number;
+        return id;
     }
 
-    public void setNumber(int number)
+    public void setId(UUID id)
     {
-        this.number = number;
+        this.id = id;
     }
 
 
     public void removeNumber()
     {
-        this.number = -1;
+        this.id = null;
     }
 
     public boolean isRemove()

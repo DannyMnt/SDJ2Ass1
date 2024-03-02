@@ -13,6 +13,7 @@ import model.Vinyl;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ListVinylViewModel implements PropertyChangeListener {
     private Model model;
@@ -63,10 +64,9 @@ public class ListVinylViewModel implements PropertyChangeListener {
 
     public void setSelected(SimpleVinylViewModel vinylVm)
     {
+        if(vinylVm == null) return;
         selectedExerciseProperty.set(vinylVm);
-        String temp = vinylVm.getNumberPropertyProperty().getValue();
-        System.out.println(vinylVm.getNumberPropertyProperty().getValue());
-        viewModelState.setNumber(Integer.parseInt(temp));
+        viewModelState.setId(UUID.fromString(vinylVm.getNumberPropertyProperty().getValue()));
         viewModelState.setState(vinylVm.getStatePropertyProperty().getValue());
     }
 
