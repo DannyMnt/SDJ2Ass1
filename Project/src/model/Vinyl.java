@@ -74,4 +74,11 @@ public class Vinyl {
     public void toBorrowedAndReserved(){
         state.toBorrowedAndReserved(this);
     }
+
+    @Override public String toString()
+    {
+        return "Vinyl{" + "title='" + title + '\'' + ", artist='" + artist
+            + '\'' + ", year=" + year + ", state=" + state.status() + ", isRemoved="
+            + isRemoved + '}';
+    }
 }
