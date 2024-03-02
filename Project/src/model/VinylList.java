@@ -2,30 +2,28 @@ package model;
 
 import java.util.ArrayList;
 
-public class VinylList
-{
-  private ArrayList<Vinyl> vinyls;
-
-  public VinylList(ArrayList<Vinyl> vinyls)
-  {
-    this.vinyls = vinyls;
-  }
-
-  public ArrayList<Vinyl> getVinyls() {
-    return vinyls;
-  }
+public class VinylList {
+    private final ArrayList<Vinyl> vinyls;
 
 
-  public void addVinyl(Vinyl vinyl){
-    vinyls.add(vinyl);
-  }
+    public VinylList(){
+        this.vinyls = new ArrayList<Vinyl>();
+    }
 
 
-  public void removeVinyl(Vinyl vinyl){
-    vinyls.remove(vinyl);
-  }
+    public ArrayList<Vinyl> getVinyls(){
+        return vinyls;
+    }
 
-  public Vinyl getVinyl(int index){
-    return vinyls.get(index);
-  }
+    public void addVinyl(Vinyl vinyl){
+        vinyls.add(vinyl);
+    }
+
+    public void removeVinyl(int index){
+        vinyls.remove(index);
+    }
+
+    public Vinyl getVinyl(int index){
+        return vinyls.get(index);
+    }
 }

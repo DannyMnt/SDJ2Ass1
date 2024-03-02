@@ -4,27 +4,14 @@ public class Vinyl {
     private String title;
     private String artist;
     private int year;
-    private State state;
+    private StateContext context;
 
-  private String reserveName;
-  private String borrowName;
 
-  public Vinyl(){
+    public Vinyl(String title, String artist, int year){
+        this.title = title;
+        this.artist = artist;
+        this.year = year;
+        this.context = new StateContext();
+    }
 
-  }
-  public void setReserveName(String reserveName) {
-    this.reserveName = reserveName;
-  }
-
-  public void setBorrowName(String borrowName) {
-    this.borrowName = borrowName;
-  }
-
-  public String getReserveName() {
-    return reserveName;
-  }
-
-  public String getBorrowName() {
-    return borrowName;
-  }
 }
