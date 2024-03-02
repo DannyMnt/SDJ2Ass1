@@ -9,29 +9,29 @@ public class StateContext {
         this.isRemoved = false;
     }
 
-    public void toAvailable(StateContext context){
+    public synchronized void toAvailable(StateContext context){
         currentState.toAvailable(this);
     }
-    public  void toReserved(StateContext context){
+    public synchronized void toReserved(StateContext context){
         currentState.toReserved(this);
     }
 
-    public  void toBorrowed(StateContext context){
+    public synchronized void toBorrowed(StateContext context){
         currentState.toBorrowed(this);
     }
 
-    public  void toBorrowedAndReserved(StateContext context){
+    public synchronized void toBorrowedAndReserved(StateContext context){
         currentState.toBorrowedAndReserved(this);
     }
-    public  void toRemoved(StateContext context){
+    public synchronized void toRemoved(StateContext context){
         currentState.toRemoved(this);
     }
 
-    public void setState(State state){
+    public synchronized void setState(State state){
         this.currentState = state;
     }
 
-    public void setRemoved() {
+    public synchronized void setRemoved() {
         this.isRemoved = false;
     }
 }
