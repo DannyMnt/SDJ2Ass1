@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class VinylList {
     private final ArrayList<Vinyl> vinyls;
@@ -23,7 +24,7 @@ public class VinylList {
         vinyls.remove(index);
     }
 
-    public Vinyl getVinyl(int index){
-        return vinyls.get(index);
+    public Vinyl getVinyl(UUID id){
+        return vinyls.stream().filter(vinyl -> vinyl.getId().equals(id)).findFirst().orElse(null);
     }
 }
