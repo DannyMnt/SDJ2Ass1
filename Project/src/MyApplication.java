@@ -21,7 +21,10 @@ public class MyApplication extends Application
 
         for (int i = 0; i < 10; i++)
         {
-            model.addVinyl(new Vinyl(titles[i],artists[i],years[i]));
+
+            Vinyl newVinyl = new Vinyl(titles[i],artists[i],years[i]);
+            System.out.println(newVinyl.toString());
+            model.addVinyl(newVinyl);
         }
     }
 }
