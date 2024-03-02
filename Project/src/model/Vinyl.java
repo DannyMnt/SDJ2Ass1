@@ -1,45 +1,41 @@
 package model;
 
+import java.util.UUID;
+
 public class Vinyl {
     private String title;
     private String artist;
-<<<<<<< Updated upstream
-    private int year;
+
+    private String year;
 
     private State state;
 
     private boolean isRemoved;
-=======
-    private String year;
-    private StateContext context;
->>>>>>> Stashed changes
 
-    private String number;
-    private String state;
+    private UUID id;
 
-
-    public Vinyl(String title, String artist, String year, String number){
-        this.number = number;
+    public Vinyl(String title, String artist, String year){
+        this.id = UUID.randomUUID();
         this.title = title;
         this.artist = artist;
         this.year = year;
-<<<<<<< Updated upstream
         this.state = new VinylAvailable();
         this.isRemoved = false;
     }
 
-=======
-        this.context = new StateContext();
-        this.state = "Available";
+
+    public State getState() {
+        return state;
     }
 
+    public UUID getId() {
+        return id;
+    }
 
->>>>>>> Stashed changes
     public String getTitle() {
         return title;
     }
 
-<<<<<<< Updated upstream
 
     public void setTitle(String title) {
         this.title = title;
@@ -53,11 +49,11 @@ public class Vinyl {
         this.artist = artist;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -98,20 +94,6 @@ public class Vinyl {
         return "Vinyl{" + "title='" + title + '\'' + ", artist='" + artist
             + '\'' + ", year=" + year + ", state=" + state.status() + ", isRemoved="
             + isRemoved + '}';
-=======
-    public String getArtist() {
-        return artist;
-    }
-    public String getState() {
-        return state;
-    }
 
-    public String getYear() {
-        return year;
-    }
-
-    public String getNumber() {
-        return number;
->>>>>>> Stashed changes
     }
 }

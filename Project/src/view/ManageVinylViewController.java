@@ -83,7 +83,7 @@ public class ManageVinylViewController
     }
 
     @FXML public void onReserve(){
-viewModel.
+
     }
     @FXML public void onBorrow(){
 

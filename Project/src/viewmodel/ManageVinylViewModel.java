@@ -42,7 +42,7 @@ public class ManageVinylViewModel
         titleProperty.set(vinyl.getTitle());
         artistProperty.set(vinyl.getArtist());
         yearProperty.set(vinyl.getYear());
-        stateProperty.set(vinyl.getState());
+        stateProperty.set(vinyl.getState().status());
 
         if(viewModelState.getState().equals("reserved")){
 

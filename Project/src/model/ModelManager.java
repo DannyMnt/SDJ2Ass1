@@ -7,6 +7,7 @@ import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ModelManager implements Model, UnnamedPropertyChangeSubject {
     private PropertyChangeSupport propertyChangeSupport;
@@ -23,12 +24,12 @@ public class ModelManager implements Model, UnnamedPropertyChangeSubject {
     }
 
     private void createDummyData(){
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000", "1"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
+        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
     }
 
     @Override

@@ -14,11 +14,11 @@ public class SimpleVinylViewModel {
     private StringProperty stateProperty;
 
     public SimpleVinylViewModel(Vinyl vinyl) {
-        this.numberProperty = new SimpleStringProperty(vinyl.getNumber());
+        this.numberProperty = new SimpleStringProperty(vinyl.getId().toString());
         this.titleProperty = new SimpleStringProperty(vinyl.getTitle());
         this.artistProperty = new SimpleStringProperty(vinyl.getArtist());
         this.yearProperty = new SimpleStringProperty(vinyl.getYear());
-        this.stateProperty = new SimpleStringProperty(vinyl.getState());
+        this.stateProperty = new SimpleStringProperty(vinyl.getState().status());
 
         System.out.println(titleProperty.getValue());
     }
