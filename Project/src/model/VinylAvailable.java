@@ -8,18 +8,18 @@ public class VinylAvailable extends State {
 
 
     @Override
-    public void toBorrowed(StateContext context) {
-        context.setState(new VinylBorrowed());
+    public void toBorrowed(Vinyl vinyl) {
+        vinyl.setState(new VinylBorrowed());
     }
 
     @Override
-    public void toReserved(StateContext context){
-        context.setState(new VinylReserved());
+    public void toReserved(Vinyl vinyl){
+        vinyl.setState(new VinylReserved());
     }
 
     @Override
-    public void toRemoved(StateContext context){
-        context.setRemoved();
+    public void toRemoved(Vinyl vinyl){
+        vinyl.setRemoved();
     }
 
     @Override

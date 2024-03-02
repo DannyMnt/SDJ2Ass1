@@ -1,23 +1,23 @@
 package model;
 
 public abstract class State {
-    public void toAvailable(StateContext context) {
+    public void toAvailable(Vinyl vinyl) {
 
     }
 
-    public void toReserved(StateContext context) {
+    public void toReserved(Vinyl vinyl) {
 
     }
 
-    public void toBorrowed(StateContext context) {
+    public void toBorrowed(Vinyl vinyl) {
 
     }
 
-    public void toBorrowedAndReserved(StateContext context) {
+    public void toBorrowedAndReserved(Vinyl vinyl) {
 
     }
 
-    public void toRemoved(StateContext context) {
+    public void toRemoved(Vinyl vinyl) {
 
     }
 

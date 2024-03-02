@@ -8,8 +8,8 @@ public class VinylBorrowedAndReserved extends State{
 
 
     @Override
-    public void toReserved(StateContext context){
-        context.setState(new VinylReserved());
+    public void toReserved(Vinyl vinyl){
+        vinyl.setState(new VinylReserved());
     }
 
     @Override

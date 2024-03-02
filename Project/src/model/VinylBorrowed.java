@@ -6,13 +6,13 @@ public class VinylBorrowed extends State{
     }
 
     @Override
-    public void toAvailable(StateContext context) {
-        context.setState(new VinylAvailable());
+    public void toAvailable(Vinyl vinyl) {
+        vinyl.setState(new VinylAvailable());
     }
 
     @Override
-    public void toBorrowedAndReserved(StateContext context){
-        context.setState(new VinylBorrowedAndReserved());
+    public void toBorrowedAndReserved(Vinyl vinyl){
+        vinyl.setState(new VinylBorrowedAndReserved());
     }
 
     @Override
