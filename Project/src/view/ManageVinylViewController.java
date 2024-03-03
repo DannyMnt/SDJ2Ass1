@@ -16,7 +16,15 @@ public class ManageVinylViewController
     @FXML private TextField yearLabel;
 
     @FXML private Label errorLabel;
+    @FXML private TextField nameLabel;
     @FXML private Button cancelButton;
+    @FXML private Label reserveName;
+    @FXML private Label borrowName;
+    @FXML private Button reserveButton;
+    @FXML private Button borrowButton;
+    @FXML private Button returnButton;
+    @FXML private Button removeButton;
+
 
     private Region root;
     private ViewHandler viewHandler;
@@ -40,10 +48,6 @@ public class ManageVinylViewController
 
         reset();
     }
-    public Region getRoot(){
-        return root;
-    }
-
     public void reset()
     {
         viewModel.reset();
@@ -61,7 +65,7 @@ public class ManageVinylViewController
         viewHandler.openView("list");
     }
 
-    public Region getzRoot()
+    public Region getRoot()
     {
         return root;
     }
@@ -83,7 +87,10 @@ public class ManageVinylViewController
     }
 
     @FXML public void onReserve(){
-
+        reserveName.setText(nameLabel.getText());
+        reserveButton.setDisable(true);
+//        model.reserveVinyl();
+        reset();
     }
     @FXML public void onBorrow(){
 

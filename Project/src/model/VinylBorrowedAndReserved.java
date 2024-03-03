@@ -4,8 +4,13 @@ public class VinylBorrowedAndReserved extends State{
 
 
     @Override
+    public String getVinylStateName() {
+        return "BorrowedAndReserved";
+    }
+
+    @Override
     public void toReserved(Vinyl vinyl){
-        vinyl.setState(new VinylReserved());
+        vinyl.setVinylState(new VinylReserved());
     }
 
     @Override

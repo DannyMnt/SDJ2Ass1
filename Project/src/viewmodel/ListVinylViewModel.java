@@ -30,7 +30,6 @@ public class ListVinylViewModel implements PropertyChangeListener {
         this.viewModelState = viewModelState;
         selectedVinylProperty = new SimpleObjectProperty<>();
         errorProperty = new SimpleStringProperty();
-
         list = FXCollections.observableArrayList();
         loadFromModel();
     }

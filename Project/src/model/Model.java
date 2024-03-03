@@ -1,7 +1,6 @@
 package model;
 
 
-import utility.observer.javaobserver.NamedPropertyChangeSubject;
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.util.ArrayList;

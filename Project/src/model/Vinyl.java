@@ -1,30 +1,29 @@
 package model;
 
+import java.beans.PropertyChangeSupport;
 import java.util.UUID;
 
 public class Vinyl {
     private String title;
     private String artist;
-
     private String year;
-
-    private State state;
-
+    private State vinylState;
+    private String state = "Available";
     private boolean isRemoved;
-
     private UUID id;
-
+    private PropertyChangeSupport propertyChangeSupport;
     public Vinyl(String title, String artist, String year){
+        propertyChangeSupport = new PropertyChangeSupport(this);
         this.id = UUID.randomUUID();
         this.title = title;
         this.artist = artist;
         this.year = year;
-        this.state = new VinylAvailable();
         this.isRemoved = false;
+        setVinylState(new VinylAvailable());
     }
 
 
-    public State getState() {
+    public String getState() {
         return state;
     }
 
@@ -36,25 +35,12 @@ public class Vinyl {
         return title;
     }
 
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
     public String getYear() {
         return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
     }
 
     public boolean isRemoved() {
@@ -65,34 +51,41 @@ public class Vinyl {
         isRemoved = false;
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void setVinylState(State vinylState) {
+        String oldState = String.valueOf(this.state);
+        this.vinylState = vinylState;
+        this.state = vinylState.getVinylStateName();
+        propertyChangeSupport.firePropertyChange("state", oldState, this.state);
+    }
+
+    public State getVinylState() {
+        return vinylState;
     }
 
     public synchronized void borrowVinyl(){
-        state.toBorrowed(this);
+        vinylState.toBorrowed(this);
     }
 
     public synchronized void reserveVinyl(){
-        state.toReserved(this);
+        vinylState.toReserved(this);
     }
 
     public synchronized void returnVinyl(){
-        state.toAvailable(this);
+        vinylState.toAvailable(this);
     }
 
     public synchronized void removeVinyl(){
-        state.toRemoved(this);
+        vinylState.toRemoved(this);
     }
 
     public synchronized void borrowAndReserveVinyl(){
-        state.toBorrowedAndReserved(this);
+        vinylState.toBorrowedAndReserved(this);
     }
 
     @Override public String toString()
     {
         return "Vinyl{" + "title='" + title + '\'' + ", artist='" + artist
-            + '\'' + ", year=" + year + ", state=" + state.status() + ", isRemoved="
+            + '\'' + ", year=" + year + ", state=" + vinylState.status() + ", isRemoved="
             + isRemoved + '}';
 
     }

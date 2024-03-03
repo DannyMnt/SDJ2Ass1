@@ -1,16 +1,19 @@
 package model;
 
 public class VinylAvailable extends State {
-
+    @Override
+    public String getVinylStateName() {
+        return "Available";
+    }
 
     @Override
     public void toBorrowed(Vinyl vinyl) {
-        vinyl.setState(new VinylBorrowed());
+        vinyl.setVinylState(new VinylBorrowed());
     }
 
     @Override
     public void toReserved(Vinyl vinyl){
-        vinyl.setState(new VinylReserved());
+        vinyl.setVinylState(new VinylReserved());
     }
 
     @Override

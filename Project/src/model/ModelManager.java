@@ -47,10 +47,6 @@ public class ModelManager implements Model, UnnamedPropertyChangeSubject {
         return vinylList.getVinyl(id);
     }
 
-
-
-
-
     @Override
     public void addVinyl(Vinyl vinyl) {
 

@@ -11,7 +11,7 @@ public class ViewHandler
     private ViewModelFactory viewModelFactory;
     private Stage primaryStage;
     private Scene currentScene;
-    private ManageVinylViewController manageExerciseViewController;
+    private ManageVinylViewController manageVinylViewController;
     private ListVinylViewController listExercisesViewController;
 
     public ViewHandler(ViewModelFactory viewModelFactory)
@@ -79,15 +79,15 @@ public class ViewHandler
 
     private Region loadManageView(String fxmlFile)
     {
-        if (manageExerciseViewController == null)
+        if (manageVinylViewController == null)
         {
             try
             {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource(fxmlFile));
                 Region root = loader.load();
-                manageExerciseViewController = loader.getController();
-                manageExerciseViewController
+                manageVinylViewController = loader.getController();
+                manageVinylViewController
                         .init(this, viewModelFactory.getManageVinylViewModel(), root);
             }
             catch (Exception e)
@@ -97,8 +97,8 @@ public class ViewHandler
         }
         else
         {
-            manageExerciseViewController.reset();
+            manageVinylViewController.reset();
         }
-        return manageExerciseViewController.getRoot();
+        return manageVinylViewController.getRoot();
     }
 }

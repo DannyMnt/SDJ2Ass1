@@ -18,7 +18,7 @@ public class SimpleVinylViewModel {
         this.titleProperty = new SimpleStringProperty(vinyl.getTitle());
         this.artistProperty = new SimpleStringProperty(vinyl.getArtist());
         this.yearProperty = new SimpleStringProperty(vinyl.getYear());
-        this.stateProperty = new SimpleStringProperty(vinyl.getState().status());
+        this.stateProperty = new SimpleStringProperty(vinyl.getVinylState().status());
 
         System.out.println(titleProperty.getValue());
     }

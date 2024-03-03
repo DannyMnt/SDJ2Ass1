@@ -1,6 +1,7 @@
 package model;
 
 public abstract class State {
+    public abstract String getVinylStateName();
     public void toAvailable(Vinyl vinyl) {
 
     }

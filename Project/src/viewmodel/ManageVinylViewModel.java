@@ -4,8 +4,10 @@ import javafx.beans.property.*;
 import model.Vinyl;
 import model.Model;
 
-public class ManageVinylViewModel
-{
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class ManageVinylViewModel implements PropertyChangeListener {
     private ViewModelState viewModelState;
     private StringProperty errorProperty;
     private StringProperty headerProperty;
@@ -16,6 +18,7 @@ public class ManageVinylViewModel
     private StringProperty artistProperty;
     private StringProperty yearProperty;
     private StringProperty stateProperty;
+    private StringProperty nameProperty;
 
 
 
@@ -32,6 +35,7 @@ public class ManageVinylViewModel
         yearProperty = new SimpleStringProperty();
         stateProperty = new SimpleStringProperty();
         numberProperty = new SimpleStringProperty();
+        model.addListener(this);
     }
 
     public void reset()
@@ -41,7 +45,7 @@ public class ManageVinylViewModel
         titleProperty.set(vinyl.getTitle());
         artistProperty.set(vinyl.getArtist());
         yearProperty.set(vinyl.getYear());
-        stateProperty.set(vinyl.getState().status());
+        stateProperty.set(vinyl.getVinylState().status());
 
         if(viewModelState.getState().equals("reserved")){
 
@@ -90,5 +94,17 @@ public class ManageVinylViewModel
 
     public StringProperty getStateProperty() {
         return stateProperty;
+    }
+
+    public StringProperty getNameProperty() {
+        return nameProperty;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if(evt.getPropertyName().equals("state")){
+            String newState = (String) evt.getNewValue();
+            stateProperty.set(newState);
+        }
     }
 }
