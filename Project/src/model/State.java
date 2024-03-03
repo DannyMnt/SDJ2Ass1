@@ -2,23 +2,19 @@ package model;
 
 public abstract class State {
     public abstract String getVinylStateName();
-    public void toAvailable(Vinyl vinyl) {
+    public void toReturn(Vinyl vinyl) {
 
     }
 
-    public void toReserved(Vinyl vinyl) {
+    public void toReserve(Vinyl vinyl) {
 
     }
 
-    public void toBorrowed(Vinyl vinyl) {
+    public void toBorrow(Vinyl vinyl) {
 
     }
 
-    public void toBorrowedAndReserved(Vinyl vinyl) {
-
-    }
-
-    public void toRemoved(Vinyl vinyl) {
+    public void toRemove(Vinyl vinyl) {
 
     }
 

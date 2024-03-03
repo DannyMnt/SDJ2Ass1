@@ -60,13 +60,9 @@ public class Vinyl {
         return year;
     }
 
-    public boolean isRemoved() {
-        return isRemoved;
-    }
 
-    public void setRemoved() {
-        isRemoved = false;
-    }
+
+
 
     public void setVinylState(State vinylState) {
         if(!isRemoved){
@@ -84,24 +80,21 @@ public class Vinyl {
     }
 
     public synchronized void borrowVinyl(){
-        vinylState.toBorrowed(this);
+        vinylState.toBorrow(this);
     }
 
     public synchronized void reserveVinyl(){
-        vinylState.toReserved(this);
+        vinylState.toReserve(this);
     }
 
     public synchronized void returnVinyl(){
-        vinylState.toAvailable(this);
+        vinylState.toReturn(this);
     }
 
     public synchronized void removeVinyl(){
-        vinylState.toRemoved(this);
+        vinylState.toRemove(this);
     }
 
-    public synchronized void borrowAndReserveVinyl(){
-        vinylState.toBorrowedAndReserved(this);
-    }
 
     @Override public String toString()
     {
