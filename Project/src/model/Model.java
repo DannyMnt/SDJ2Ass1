@@ -19,7 +19,7 @@ public interface Model extends UnnamedPropertyChangeSubject
     void addVinyl(Vinyl vinyl);
     Vinyl removeVinyl(int number);
 
-    public void changeState(String state);
+    public void changeState(String state, UUID uuid);
 
 
 //    public void reserveVinyl(Vinyl vinyl);

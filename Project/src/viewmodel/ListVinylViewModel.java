@@ -38,7 +38,7 @@ public class ListVinylViewModel implements PropertyChangeListener {
     public void clear()
     {
         errorProperty.set(null);
-        // Maybe: loadFromModel()
+        loadFromModel();
     }
 
     private void loadFromModel()

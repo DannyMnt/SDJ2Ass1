@@ -85,33 +85,42 @@ public class ManageVinylViewController
     }
 
     @FXML public void onReserve(){
-        reserveName.setText(nameLabel.getText());
-        reserveButton.setDisable(true);
+//        reserveName.setText(nameLabel.getText());
+//        reserveButton.setDisable(true);
         viewModel.changeStage("reserve");
         reset();
     }
     @FXML public void onBorrow(){
-        if(nameLabel.getText().equals(reserveName.getText())) {
-            borrowButton.setDisable(true);
-            reserveButton.setDisable(false);
-            returnButton.setDisable(false);
-            borrowName.setText(reserveName.getText());
-            reserveName.setText(null);
-            reset();
-        }
+        viewModel.changeStage("borrow");
+        reset();
+
+//        if(nameLabel.getText().equals(reserveName.getText())) {
+//            borrowButton.setDisable(true);
+//            reserveButton.setDisable(false);
+//            returnButton.setDisable(false);
+//            borrowName.setText(reserveName.getText());
+//            reserveName.setText(null);
+//            reset();
+//        }
     }
     @FXML public void onReturn(){
-        if(nameLabel.getText().equals(borrowName.getText())) {
-            returnButton.setDisable(true);
-            borrowName.setText(null);
-            borrowButton.setDisable(false);
-            reset();
-        }
+//        if(nameLabel.getText().equals(borrowName.getText())) {
+//            returnButton.setDisable(true);
+//            borrowName.setText(null);
+//            borrowButton.setDisable(false);
+//            reset();
+//        }
+
+        viewModel.changeStage("return");
+        reset();
     }
     @FXML public void onRemove(){
-        removeButton.setDisable(true);
-        reserveButton.setDisable(true);
-        if(reserveName.getText() == null)
-            borrowButton.setDisable(true);
+//        removeButton.setDisable(true);
+//        reserveButton.setDisable(true);
+//        if(reserveName.getText() == null)
+//            borrowButton.setDisable(true);
+        viewModel.changeStage("remove");
+        reset();
+
     }
 }
