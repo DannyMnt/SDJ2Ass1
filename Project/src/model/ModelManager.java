@@ -55,23 +55,24 @@ public class ModelManager implements Model, UnnamedPropertyChangeSubject {
     }
 
     @Override
-    public void changeState(String state, UUID uuid) {
+    public void changeState(String oldState, String state, UUID uuid) {
 
-//        Vinyl vinyl = vinylList.getVinyl(uuid);
-//        switch (state){
-//            case "reserve":
-//                vinyl.reserveVinyl();
-//                break;
-//            case "borrow":
-//                vinyl.borrowVinyl();
-//                break;
-//            case "return":
-//                vinyl.returnVinyl();
-//                break;
-//            case "remove":
-//                vinyl.removeVinyl();
-//                break;
+        Vinyl vinyl = vinylList.getVinyl(uuid);
+        switch (state) {
+            case "reserve":
+                propertyChangeSupport.firePropertyChange("reserve", oldState, state);
+                break;
+            case "borrow":
+                propertyChangeSupport.firePropertyChange("borrow", oldState, state);
+                break;
+            case "return":
+                propertyChangeSupport.firePropertyChange("return", oldState, state);
+                break;
+            case "remove":
+                propertyChangeSupport.firePropertyChange("remove", oldState, state);
+                break;
 
+        }
     }
 
 

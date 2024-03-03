@@ -22,6 +22,7 @@ public class Vinyl {
         this.year = year;
         this.isRemoved = false;
         setVinylState(new VinylAvailable());
+
     }
 
     public void setReserveName(String reserveName) {
@@ -60,10 +61,6 @@ public class Vinyl {
         return year;
     }
 
-
-
-
-
     public void setVinylState(State vinylState) {
         if(!isRemoved){
             String oldState = String.valueOf(this.state);
@@ -84,14 +81,17 @@ public class Vinyl {
     }
 
     public synchronized void reserveVinyl(){
+        String oldState = vinylState.getVinylStateName();
         vinylState.toReserve(this);
     }
 
     public synchronized void returnVinyl(){
+        String oldState = vinylState.getVinylStateName();
         vinylState.toReturn(this);
     }
 
     public synchronized void removeVinyl(){
+        String oldState = vinylState.getVinylStateName();
         vinylState.toRemove(this);
     }
 

@@ -43,6 +43,14 @@ public class ManageVinylViewController
         artistLabel.textProperty().bind(viewModel.getArtistProperty());
         yearLabel.textProperty().bind(viewModel.getYearProperty());
 
+        reserveButton.disableProperty().bind(viewModel.getReserveButtonProperty());
+        borrowButton.disableProperty().bind(viewModel.getBorrowButtonProperty());
+        returnButton.disableProperty().bind(viewModel.getReturnButtonProperty());
+        removeButton.disableProperty().bind(viewModel.getRemoveButtonProperty());
+        reserveName.textProperty().bind(viewModel.getReserveNameProperty());
+        borrowName.textProperty().bind(viewModel.getBorrowNameProperty());
+        nameLabel.textProperty().bindBidirectional(viewModel.getNameProperty());
+
         reset();
     }
     public void reset()
@@ -60,7 +68,7 @@ public class ManageVinylViewController
     @FXML private void onCancel()
     {
         viewHandler.openView("list");
-        viewModel.reset();
+        reset();
     }
 
     public Region getRoot()
