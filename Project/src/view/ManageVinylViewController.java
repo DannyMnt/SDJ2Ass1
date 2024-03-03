@@ -60,6 +60,7 @@ public class ManageVinylViewController
     @FXML private void onCancel()
     {
         viewHandler.openView("list");
+        viewModel.reset();
     }
 
     public Region getRoot()
@@ -86,7 +87,7 @@ public class ManageVinylViewController
     @FXML public void onReserve(){
         reserveName.setText(nameLabel.getText());
         reserveButton.setDisable(true);
-
+        viewModel.changeStage("reserve");
         reset();
     }
     @FXML public void onBorrow(){

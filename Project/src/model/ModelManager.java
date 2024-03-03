@@ -57,7 +57,10 @@ public class ModelManager implements Model, UnnamedPropertyChangeSubject {
         return null;
     }
 
-
+    @Override
+    public void changeState(String state) {
+//        vinylList.getVinyl()
+    }
 
 
 //    @Override

@@ -11,8 +11,6 @@ public class ManageVinylViewModel implements PropertyChangeListener {
     private ViewModelState viewModelState;
     private StringProperty errorProperty;
     private StringProperty headerProperty;
-
-
     private StringProperty numberProperty;
     private StringProperty titleProperty;
     private StringProperty artistProperty;
@@ -86,8 +84,6 @@ public class ManageVinylViewModel implements PropertyChangeListener {
         return yearProperty;
     }
 
-
-
     public StringProperty getStateProperty() {
         return stateProperty;
     }
@@ -101,6 +97,23 @@ public class ManageVinylViewModel implements PropertyChangeListener {
         if(evt.getPropertyName().equals("state")){
             String newState = (String) evt.getNewValue();
             stateProperty.set(newState);
+        }
+    }
+
+    public void changeStage(String state) {
+        switch (state){
+            case "reserve":
+                viewModelState.setState("reserve");
+                break;
+            case "borrow":
+                viewModelState.setState("borrow");
+                break;
+            case "return":
+                viewModelState.setState("return");
+                break;
+            case "remove":
+                viewModelState.setState("remove");
+                break;
         }
     }
 }
