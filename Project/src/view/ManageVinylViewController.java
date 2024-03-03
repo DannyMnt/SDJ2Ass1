@@ -29,9 +29,9 @@ public class ManageVinylViewController
     private Region root;
     private ViewHandler viewHandler;
     private ManageVinylViewModel viewModel;
+    public ManageVinylViewController(){}
 
-    public void init(ViewHandler viewHandler,
-                     ManageVinylViewModel manageVinylViewModel, Region root)
+    public void init(ViewHandler viewHandler, ManageVinylViewModel manageVinylViewModel, Region root)
     {
         this.viewHandler = viewHandler;
         this.viewModel = manageVinylViewModel;
@@ -39,12 +39,9 @@ public class ManageVinylViewController
 
         errorLabel.textProperty().bind(viewModel.getErrorProperty());
         headerLabel.textProperty().bind(viewModel.getHeaderProperty());
-
         titleLabel.textProperty().bind(viewModel.getTitleProperty());
         artistLabel.textProperty().bind(viewModel.getArtistProperty());
         yearLabel.textProperty().bind(viewModel.getYearProperty());
-
-
 
         reset();
     }
@@ -89,17 +86,31 @@ public class ManageVinylViewController
     @FXML public void onReserve(){
         reserveName.setText(nameLabel.getText());
         reserveButton.setDisable(true);
-//        model.reserveVinyl();
+
         reset();
     }
     @FXML public void onBorrow(){
-
+        if(nameLabel.getText().equals(reserveName.getText())) {
+            borrowButton.setDisable(true);
+            reserveButton.setDisable(false);
+            returnButton.setDisable(false);
+            borrowName.setText(reserveName.getText());
+            reserveName.setText(null);
+            reset();
+        }
     }
     @FXML public void onReturn(){
-
+        if(nameLabel.getText().equals(borrowName.getText())) {
+            returnButton.setDisable(true);
+            borrowName.setText(null);
+            borrowButton.setDisable(false);
+            reset();
+        }
     }
     @FXML public void onRemove(){
-
+        removeButton.setDisable(true);
+        reserveButton.setDisable(true);
+        if(reserveName.getText() == null)
+            borrowButton.setDisable(true);
     }
-
 }

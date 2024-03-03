@@ -19,9 +19,6 @@ public class ManageVinylViewModel implements PropertyChangeListener {
     private StringProperty yearProperty;
     private StringProperty stateProperty;
     private StringProperty nameProperty;
-
-
-
     private Model model;
 
     public ManageVinylViewModel(Model model, ViewModelState viewModelState)
@@ -56,7 +53,6 @@ public class ManageVinylViewModel implements PropertyChangeListener {
         }
 
     }
-
 
     public StringProperty getErrorProperty() {
         return errorProperty;

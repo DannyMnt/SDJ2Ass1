@@ -12,6 +12,8 @@ public class Vinyl {
     private boolean isRemoved;
     private UUID id;
     private PropertyChangeSupport propertyChangeSupport;
+    private String reserveName;
+    private String borrowName;
     public Vinyl(String title, String artist, String year){
         propertyChangeSupport = new PropertyChangeSupport(this);
         this.id = UUID.randomUUID();
@@ -22,6 +24,21 @@ public class Vinyl {
         setVinylState(new VinylAvailable());
     }
 
+    public void setReserveName(String reserveName) {
+        this.reserveName = reserveName;
+    }
+
+    public void setBorrowName(String borrowName) {
+        this.borrowName = borrowName;
+    }
+
+    public String getReserveName() {
+        return reserveName;
+    }
+
+    public String getBorrowName() {
+        return borrowName;
+    }
 
     public String getState() {
         return state;
