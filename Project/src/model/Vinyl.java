@@ -69,10 +69,14 @@ public class Vinyl {
     }
 
     public void setVinylState(State vinylState) {
-        String oldState = String.valueOf(this.state);
-        this.vinylState = vinylState;
-        this.state = vinylState.getVinylStateName();
-        propertyChangeSupport.firePropertyChange("state", oldState, this.state);
+        if(!isRemoved){
+            String oldState = String.valueOf(this.state);
+            this.vinylState = vinylState;
+            this.state = vinylState.getVinylStateName();
+            propertyChangeSupport.firePropertyChange("state", oldState, this.state);
+        }else{
+            System.out.println("Cannot change state: vinyl is removed");
+        }
     }
 
     public State getVinylState() {

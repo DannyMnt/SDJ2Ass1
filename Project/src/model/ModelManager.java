@@ -13,23 +13,20 @@ public class ModelManager implements Model, UnnamedPropertyChangeSubject {
     private PropertyChangeSupport propertyChangeSupport;
     private VinylList vinylList;
 
-    public ModelManager(){
+    public ModelManager(ArrayList<Vinyl> vinyls){
         this.propertyChangeSupport = new PropertyChangeSupport(this);
         vinylList = new VinylList();
-        createDummyData();
+        createDummyData(vinyls);
     }
     @Override
     public void addListener(PropertyChangeListener listener) {
         propertyChangeSupport.addPropertyChangeListener(listener);
     }
 
-    private void createDummyData(){
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
-        vinylList.addVinyl(new Vinyl("fwefwe", "Billie Ellish", "2000"));
+    private void createDummyData(ArrayList<Vinyl> vinyls){
+        for(Vinyl v : vinyls){
+            vinylList.addVinyl(v);
+        }
     }
 
     @Override
