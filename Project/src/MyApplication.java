@@ -38,34 +38,56 @@ public class MyApplication extends Application
         Thread bobThread = new Thread(() -> {
            while(true){
                Random random = new Random();
-               int choice = random.nextInt(5);
+               int choice = random.nextInt(4);
                int vinylChoice = random.nextInt(10);
-               switch (choice) {
-                   case 0:
-                       model.getAllVinyls().get(vinylChoice).borrowVinyl();
-                       System.out.println("Bob is borrowing");
-                       System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+               Vinyl selectedVinyl = model.getAllVinyls().get(vinylChoice);
+               String currentState = selectedVinyl.getVinylState().getVinylStateName();
+
+               switch (currentState) {
+                   case "Available":
+                       switch (choice) {
+                           case 0:
+                               selectedVinyl.borrowVinyl();
+                               System.out.println("Bob is borrowing" + selectedVinyl.getTitle());
+                               break;
+                           case 1:
+                               selectedVinyl.reserveVinyl();
+                               System.out.println("Bob is reserving" + selectedVinyl.getTitle());
+                               break;
+                           case 3:
+                               selectedVinyl.removeVinyl();
+                               System.out.println("Bob is removing" + selectedVinyl.getTitle());
+                               break;
+                           default:
+                               break;
+                       }
                        break;
-                   case 1:
-                       model.getAllVinyls().get(vinylChoice).reserveVinyl();
-                       System.out.println("Bob is reserving");
-                       System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+                   case "Reserved":
+                       if (choice == 0) {
+                           selectedVinyl.borrowVinyl();
+                           System.out.println("Bob is borrowing" + selectedVinyl.getTitle());
+                       }
                        break;
-                   case 2:
-                       model.getAllVinyls().get(vinylChoice).returnVinyl();
-                       System.out.println("Bob is returning");
-                       System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+                   case "Borrowed":
+                       switch (choice) {
+                           case 2:
+                               selectedVinyl.returnVinyl();
+                               System.out.println("Bob is returning" + selectedVinyl.getTitle());
+                               break;
+                           case 1:
+                               selectedVinyl.reserveVinyl();
+                               System.out.println("Bob is reserving" + selectedVinyl.getTitle());
+                               break;
+                           default:
+                               break;
+                       }
                        break;
-                   case 3:
-                       model.getAllVinyls().get(vinylChoice).removeVinyl();
-                       System.out.println("Bob is removing");
-                       System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+                   case "BorrowedAndReserved":
+                       if (choice == 2) {
+                           selectedVinyl.returnVinyl();
+                           System.out.println("Bob is returning" + selectedVinyl.getTitle());
+                       }
                        break;
-//                   case 4:
-//                       model.getAllVinyls().get(vinylChoice).borrowAndReserveVinyl();
-//                       System.out.println("Bob is borrowing and reserving");
-//                       System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
-//                       break;
                    default:
                        break;
                }
@@ -80,36 +102,56 @@ public class MyApplication extends Application
         Thread wendyThread = new Thread(() -> {
             while(true){
                 Random random = new Random();
-                int choice = random.nextInt(5);
+                int choice = random.nextInt(4);
                 int vinylChoice = random.nextInt(10);
-                switch (choice) {
-                    case 0:
-                        model.getAllVinyls().get(vinylChoice).borrowVinyl();
-                        System.out.println("Wendy is borrowing");
-                        System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
-                        break;
-                    case 1:
-                        model.getAllVinyls().get(vinylChoice).reserveVinyl();
-                        System.out.println("Wendy is reserving");
-                        System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+                Vinyl selectedVinyl = model.getAllVinyls().get(vinylChoice);
+                String currentState = selectedVinyl.getVinylState().getVinylStateName();
 
+                switch (currentState) {
+                    case "Available":
+                        switch (choice) {
+                            case 0:
+                                selectedVinyl.borrowVinyl();
+                                System.out.println("Bob is borrowing" + selectedVinyl.getTitle());
+                                break;
+                            case 1:
+                                selectedVinyl.reserveVinyl();
+                                System.out.println("Bob is reserving" + selectedVinyl.getTitle());
+                                break;
+                            case 3:
+                                selectedVinyl.removeVinyl();
+                                System.out.println("Bob is removing" + selectedVinyl.getTitle());
+                                break;
+                            default:
+                                break;
+                        }
                         break;
-                    case 2:
-                        model.getAllVinyls().get(vinylChoice).returnVinyl();
-                        System.out.println("Wendy is returning");
-                        System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+                    case "Reserved":
+                        if (choice == 0) {
+                            selectedVinyl.borrowVinyl();
+                            System.out.println("Bob is borrowing" + selectedVinyl.getTitle());
+                        }
                         break;
-                    case 3:
-                        model.getAllVinyls().get(vinylChoice).removeVinyl();
-                        System.out.println("Wendy is removing");
-                        System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+                    case "Borrowed":
+                        switch (choice) {
+                            case 2:
+                                selectedVinyl.returnVinyl();
+                                System.out.println("Bob is returning" + selectedVinyl.getTitle());
+                                break;
+                            case 1:
+                                selectedVinyl.reserveVinyl();
+                                System.out.println("Bob is reserving" + selectedVinyl.getTitle());
+                                break;
+                            default:
+                                break;
+                        }
                         break;
-//                    case 4:
-//
-//                        model.getAllVinyls().get(vinylChoice).borrowAndReserveVinyl();
-//                        System.out.println("Wendy is reserving and borrowing");
-//                        System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
-//                        break;
+                    case "BorrowedAndReserved":
+                        if (choice == 2) {
+                            selectedVinyl.returnVinyl();
+                            System.out.println("Bob is returning" + selectedVinyl.getTitle());
+                        }
+                        break;
                     default:
                         break;
                 }
