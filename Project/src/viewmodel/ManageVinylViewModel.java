@@ -101,19 +101,21 @@ public class ManageVinylViewModel implements PropertyChangeListener {
     }
 
     public void changeStage(String state) {
+        Vinyl vinyl = model.getVinyl(viewModelState.getId());
         switch (state){
             case "reserve":
-                viewModelState.setState("reserve");
+                vinyl.reserveVinyl();
                 break;
             case "borrow":
-                viewModelState.setState("borrow");
+                vinyl.borrowVinyl();
                 break;
             case "return":
-                viewModelState.setState("return");
+                vinyl.returnVinyl();
                 break;
             case "remove":
-                viewModelState.setState("remove");
+                vinyl.removeVinyl();
                 break;
         }
+        System.out.println(vinyl.getVinylState());
     }
 }

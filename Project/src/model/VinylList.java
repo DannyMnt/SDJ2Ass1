@@ -27,4 +27,12 @@ public class VinylList {
     public Vinyl getVinyl(UUID id){
         return vinyls.stream().filter(vinyl -> vinyl.getId().equals(id)).findFirst().orElse(null);
     }
+    public Vinyl getVinyl(Vinyl vinyl){
+        for (Vinyl v : vinyls) {
+            if (v.equals(vinyl)) {
+                return v;
+            }
+        }
+        return null;
+    }
 }
