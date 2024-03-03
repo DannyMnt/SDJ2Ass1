@@ -50,6 +50,10 @@ public class ManageVinylViewModel implements PropertyChangeListener {
 
     public void reset()
     {
+        reserveButton.set(false);
+        borrowButton.set(false);
+        returnButton.set(true);
+        removeButton.set(false);
         errorProperty.set(null);
         Vinyl vinyl = model.getVinyl(viewModelState.getId());
         titleProperty.set(vinyl.getTitle());
@@ -57,7 +61,12 @@ public class ManageVinylViewModel implements PropertyChangeListener {
         yearProperty.set(vinyl.getYear());
         stateProperty.set(vinyl.getVinylState().status());
         viewModelState.setState(vinyl.getVinylState().status());
+        reserveName.setValue(vinyl.getReserveName());
+        borrowName.setValue(vinyl.getBorrowName());
+        vinyl.setBorrowName(borrowName.getValue());
+        vinyl.setReserveName(reserveName.getValue());
 
+        refresh();
     }
 
     public void refresh(){
@@ -68,10 +77,9 @@ public class ManageVinylViewModel implements PropertyChangeListener {
             if(nameProperty.getValue().equals(reserveName.getValue())){
                 returnButton.set(false);
                 reserveButton.set(false);
-                borrowName.setValue(nameProperty.getValue());
+                borrowName.setValue(reserveName.getValue());
                 reserveName.setValue(null);
             }
-
         }
         else if(viewModelState.getState().equals("borrowedAndReserved")){
             reserveButton.set(true);
