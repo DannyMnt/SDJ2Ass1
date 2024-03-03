@@ -61,11 +61,11 @@ public class MyApplication extends Application
                        System.out.println("Bob is removing");
                        System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
                        break;
-                   case 4:
-                       model.getAllVinyls().get(vinylChoice).borrowAndReserveVinyl();
-                       System.out.println("Bob is borrowing and reserving");
-                       System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
-                       break;
+//                   case 4:
+//                       model.getAllVinyls().get(vinylChoice).borrowAndReserveVinyl();
+//                       System.out.println("Bob is borrowing and reserving");
+//                       System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+//                       break;
                    default:
                        break;
                }
@@ -104,12 +104,12 @@ public class MyApplication extends Application
                         System.out.println("Wendy is removing");
                         System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
                         break;
-                    case 4:
-
-                        model.getAllVinyls().get(vinylChoice).borrowAndReserveVinyl();
-                        System.out.println("Wendy is reserving and borrowing");
-                        System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
-                        break;
+//                    case 4:
+//
+//                        model.getAllVinyls().get(vinylChoice).borrowAndReserveVinyl();
+//                        System.out.println("Wendy is reserving and borrowing");
+//                        System.out.println(model.getAllVinyls().get(vinylChoice).getVinylState().toString());
+//                        break;
                     default:
                         break;
                 }
