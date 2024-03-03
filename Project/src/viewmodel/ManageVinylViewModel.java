@@ -57,7 +57,8 @@ public class ManageVinylViewModel implements PropertyChangeListener {
         yearProperty.set(vinyl.getYear());
         stateProperty.set(vinyl.getVinylState().status());
         viewModelState.setState(vinyl.getVinylState().status());
-
+//        nameProperty.set(null);
+        refresh();
     }
 
     public void refresh(){
